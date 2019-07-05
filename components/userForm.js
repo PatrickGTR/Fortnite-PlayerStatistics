@@ -1,52 +1,80 @@
 import React, { useState } from "react";
-import { Message, Form, Icon, Button, Columns } from "react-bulma-components";
+import Link from "next/link";
 
-const UserForm = () => {
-  const [name, setName] = useState("");
+const PlatformSelection = ({ platform, handlePlatform }) => {
+  return (
+    <div className="field">
+      <label className="label">Platform</label>
+      <div className="control">
+        <div className="select">
+          <select onChange={handlePlatform} value={platform} name="platform">
+            <option value="none">Select Platform</option>
+            <option value="pc">PC</option>
+            <option value="ps4">Playstation 4</option>
+            <option value="xbl">Xbox Live</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const UsernameForm = ({ handleNameChange, name }) => {
+  return (
+    <div className="field">
+      <label className="label">Username</label>
+      <div className="control has-icons-left has-icons-right">
+        <input
+          required={true}
+          onChange={handleNameChange}
+          className="input is-success"
+          type="text"
+          placeholder="Username..."
+          value={name}
+          name="username"
+        />
+        <span className="icon is-small is-left">
+          <i className="fas fa-user" />
+        </span>
+      </div>
+    </div>
+  );
+};
+
+const UserForm = props => {
   const [platform, setPlatform] = useState("Select Platform");
+  const [name, setName] = useState("");
 
-  const handleNameChange = event => setName(event.target.value);
   const handlePlatform = event => setPlatform(event.target.value);
-  const handleSubmit = event => {
-    setName("");
-    setPlatform("");
-    console.log("clicked");
-  };
+  const handleNameChange = event => setName(event.target.value);
+
   return (
     <>
-      <Message color="danger">
-        <Message.Header>Search for player</Message.Header>
-        <Message.Body>
-          <Form.Field>
-            <Form.Label>Username</Form.Label>
-            <Form.Control iconLeft>
-              <Form.Input
-                onChange={handleNameChange}
-                type="text"
-                placeholder="Username"
-                value={name}
-              />
-              <Icon align="left" icon="bars" />
-            </Form.Control>
-            <Button
-              color="success"
-              style={{ margin: "5px 0px 5px 0" }}
-              onClick={handleSubmit}
-            >
-              Submit
-            </Button>
-            <Form.Label>Platform</Form.Label>
-            <Form.Control>
-              <Form.Select onChange={handlePlatform} value={platform}>
-                <option value="none">Select Platform</option>
-                <option value="pc">PC</option>
-                <option value="ps4">Playstation 4</option>
-                <option value="xbl">Xbox Live</option>
-              </Form.Select>
-            </Form.Control>
-          </Form.Field>
-        </Message.Body>
-      </Message>
+      <div className="columns">
+        <div className="column is-half is-offset-one-quarter">
+          <article className="message is-danger">
+            <div className="message-header">
+              <p>Search Players</p>
+            </div>
+            <div className="message-body">
+              <form method="GET" action="/">
+                <UsernameForm handleNameChange={handleNameChange} name={name} />
+                <PlatformSelection
+                  handlePlatform={handlePlatform}
+                  platform={platform}
+                />
+                <div className="control" />
+                <input
+                  type="submit"
+                  className="button is-link"
+                  style={{ margin: "5px 0px 5px 0" }}
+                  value="Search Player"
+                />
+              </form>
+            </div>
+          </article>
+        </div>
+      </div>
     </>
   );
 };
