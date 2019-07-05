@@ -1,30 +1,45 @@
 import React from "react";
 
-import { Message, Heading, Tile, Box, Table } from "react-bulma-components";
-
-import LifeTimeStatistic from "../components/lifeTimeStatistics";
+import SoloStats from "../components/soloStats";
+import DuoStats from "../components/DuoStats";
+import SquadStats from "../components/SquadStats";
 
 const UserStats = ({ user }) => {
   return (
-    <Message color="danger" align="center">
-      <Message.Header>
-        {user.epicUserHandle}'s Statistics | Platform: {user.platformNameLong}
-      </Message.Header>
-      <Message.Body>
-        <Box>
-          <Heading size={3} align="center">
-            Lifetime Statistics
-          </Heading>
-          <Tile>
-            <Table>
-              <tbody>
-                <LifeTimeStatistic data={user.lifeTimeStats} />
-              </tbody>
-            </Table>
-          </Tile>
-        </Box>
-      </Message.Body>
-    </Message>
+    <>
+      <div className="columns">
+        <div className="column">
+          <article className="message is-danger">
+            <div className="message-header">
+              <p>SOLO</p>
+            </div>
+            <div className="message-body">
+              <SoloStats data={user.stats} />
+            </div>
+          </article>
+        </div>
+        <div className="column">
+          <article className="message is-info">
+            <div className="message-header">
+              <p>DUO</p>
+            </div>
+            <div className="message-body">
+              <DuoStats data={user.stats} />
+            </div>
+          </article>
+        </div>
+        <div className="column">
+          <article className="message is-warning">
+            <div className="message-header">
+              <p>SQUAD</p>
+            </div>
+            <div className="message-body">
+              <SquadStats data={user.stats} />
+            </div>
+          </article>
+        </div>
+      </div>
+    </>
   );
 };
 

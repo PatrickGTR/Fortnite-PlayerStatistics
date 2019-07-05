@@ -31,32 +31,51 @@ const Index = ({ data }) => {
         </div>
 
         <UserForm />
+
         {data === undefined ? null : <UserStats user={data} />}
       </div>
     </>
   );
 };
+
 Index.getInitialProps = async ({ query }) => {
-  if (query.username === undefined || query.platform === undefined) {
+  if (query.username === undefined || query.platform === "none") {
     return {
       error: true,
       message: "username and platform is undefined."
     };
   }
 
-  const url = encodeURI(
-    `https://api.fortnitetracker.com/v1/profile/${query.platform}/${
-      query.username
-    }`
+  const retrieveNameURL = encodeURI(
+    `https://fortnite-api.theapinetwork.com/users/id?username=${query.username}`
   );
-  const res = await fetch(url, {
+
+  let res;
+  let data;
+  res = await fetch(retrieveNameURL, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "TRN-Api-Key": "08916d7f-03fc-4b36-b89f-290acb7d08c8"
+      Authorization: "ec05f7844418ef86e1bb3ee456d21162"
     }
   });
-  const data = await res.json();
+  data = await res.json();
+  const accountid = data.data.uid;
+
+  const retrieveAccountDataURL = `https://fortnite-api.theapinetwork.com/prod09/users/public/br_stats?user_id=${accountid}&platform=${
+    query.platform
+  }`;
+
+  res = await fetch(retrieveAccountDataURL, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "ec05f7844418ef86e1bb3ee456d21162"
+    }
+  });
+
+  data = await res.json();
+  console.log(data);
 
   return { data };
 };
