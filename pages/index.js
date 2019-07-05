@@ -5,7 +5,6 @@ import "../components/style.css";
 import "react-bulma-components/dist/react-bulma-components.min.css";
 
 import UserForm from "../components/userForm";
-import { log } from "util";
 import UserStats from "../components/userStats";
 
 import fetch from "isomorphic-unfetch";
@@ -39,6 +38,9 @@ const Index = ({ data }) => {
 };
 
 Index.getInitialProps = async ({ query }) => {
+  console.log(query.username);
+  console.log(query.platform);
+
   if (query.username === undefined || query.platform === "none") {
     return {
       error: true,
@@ -62,9 +64,14 @@ Index.getInitialProps = async ({ query }) => {
   data = await res.json();
   const accountid = data.data.uid;
 
+  console.log(accountid);
+
   const retrieveAccountDataURL = `https://fortnite-api.theapinetwork.com/prod09/users/public/br_stats?user_id=${accountid}&platform=${
     query.platform
   }`;
+
+  res = undefined;
+  data = undefined;
 
   res = await fetch(retrieveAccountDataURL, {
     method: "GET",
@@ -73,9 +80,7 @@ Index.getInitialProps = async ({ query }) => {
       Authorization: "ec05f7844418ef86e1bb3ee456d21162"
     }
   });
-
   data = await res.json();
-  console.log(data);
 
   return { data };
 };
