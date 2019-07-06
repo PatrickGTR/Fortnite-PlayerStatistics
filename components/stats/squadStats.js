@@ -9,9 +9,9 @@ const SquadStats = ({ data }) => {
         </span>
         <span className="list-item">K/D - {data.kd_squad}</span>
         <span className="list-item">Kills - {data.kills_squad}</span>
-        <span className="list-item">Placed Top 1 - {data.placetop1_squad}</span>
-        <span className="list-item">Placed Top 3 - {data.placetop3_squad}</span>
-        <span className="list-item">Placed Top 6 - {data.placetop6_squad}</span>
+        <span className="list-item">Wins - {data.placetop1_squad}</span>
+        <span className="list-item">Top 3 - {data.placetop3_squad}</span>
+        <span className="list-item">Top 6 - {data.placetop6_squad}</span>
       </div>
     </>
   );
