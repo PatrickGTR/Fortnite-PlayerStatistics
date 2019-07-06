@@ -21,6 +21,7 @@ const getUserAccountID = async username => {
   }
 
   return data.data.uid;
+  z;
 };
 
 const getUserAccountData = async (accountid, platform) => {
@@ -31,7 +32,8 @@ const getUserAccountData = async (accountid, platform) => {
   const retrieveAccountDataURL = `https://fortnite-api.theapinetwork.com/prod09/users/public/br_stats?user_id=${accountid}&platform=${platform}`;
 
   const res = await fetch(retrieveAccountDataURL, requestData);
-  return await res.json();
+
+  return res.json();
 };
 
 export { getUserAccountID, getUserAccountData };
