@@ -21,7 +21,6 @@ const getUserAccountID = async username => {
   }
 
   return data.data.uid;
-  z;
 };
 
 const getUserAccountData = async (accountid, platform) => {
