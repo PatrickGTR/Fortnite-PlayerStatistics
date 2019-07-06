@@ -48,8 +48,20 @@ const UsernameForm = ({ handleNameChange, name, nameError }) => {
 const UserForm = () => {
   const [platform, setPlatform] = useState("Select Platform");
   const [name, setName] = useState("");
-  const [platformError, setPlatformError] = useState(true);
-  const [nameError, setNamError] = useState(true);
+  const [platformError, setPlatformError] = useState(false);
+  const [nameError, setNamError] = useState(false);
+
+  const handleClick = event => {
+    event.preventDefault();
+
+    if (name === "" || platform === "none") {
+      setPlatformError(true);
+      setNamError(true);
+      return;
+    }
+
+    window.location.replace(`/?username=${name}&platform=${platform}`);
+  };
 
   const handlePlatform = event => {
     const platform = event.target.value;
@@ -99,6 +111,7 @@ const UserForm = () => {
                 <div className="control" />
                 <input
                   type="submit"
+                  onClick={handleClick}
                   className="button is-link"
                   style={{ margin: "5px 0px 5px 0" }}
                   value="Search Player"
