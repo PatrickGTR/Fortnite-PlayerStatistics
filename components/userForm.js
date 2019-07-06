@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import Link from "next/link";
 
-const PlatformSelection = ({ platform, handlePlatform }) => {
+const PlatformSelection = ({ platform, handlePlatform, platformError }) => {
   return (
     <div className="field">
       <label className="label">Platform</label>
@@ -11,21 +10,23 @@ const PlatformSelection = ({ platform, handlePlatform }) => {
             <option value="none">Select Platform</option>
             <option value="pc">PC</option>
             <option value="ps4">Playstation 4</option>
-            <option value="xbl">Xbox Live</option>
+            <option value="xb1">Xbox Live</option>
           </select>
         </div>
       </div>
+      {platformError && (
+        <p className="help is-danger">Please select platform.</p>
+      )}
     </div>
   );
 };
 
-const UsernameForm = ({ handleNameChange, name }) => {
+const UsernameForm = ({ handleNameChange, name, nameError }) => {
   return (
     <div className="field">
       <label className="label">Username</label>
       <div className="control has-icons-left has-icons-right">
         <input
-          required={true}
           onChange={handleNameChange}
           className="input is-success"
           type="text"
@@ -37,16 +38,43 @@ const UsernameForm = ({ handleNameChange, name }) => {
           <i className="fas fa-user" />
         </span>
       </div>
+      {nameError && (
+        <p className="help is-danger">Please fill out this field.</p>
+      )}
     </div>
   );
 };
 
-const UserForm = props => {
+const UserForm = () => {
   const [platform, setPlatform] = useState("Select Platform");
   const [name, setName] = useState("");
+  const [platformError, setPlatformError] = useState(true);
+  const [nameError, setNamError] = useState(true);
 
-  const handlePlatform = event => setPlatform(event.target.value);
-  const handleNameChange = event => setName(event.target.value);
+  const handlePlatform = event => {
+    const platform = event.target.value;
+
+    if (platform === "none") {
+      setPlatformError(true);
+    }
+    if (platformError) {
+      setPlatformError(false);
+    }
+
+    setPlatform(platform);
+  };
+  const handleNameChange = event => {
+    const username = event.target.value;
+
+    if (username === "") {
+      setNamError(true);
+    }
+    if (nameError) {
+      setNamError(false);
+    }
+
+    setName(username);
+  };
 
   return (
     <>
@@ -58,10 +86,15 @@ const UserForm = props => {
             </div>
             <div className="message-body">
               <form method="GET" action="/">
-                <UsernameForm handleNameChange={handleNameChange} name={name} />
+                <UsernameForm
+                  handleNameChange={handleNameChange}
+                  name={name}
+                  nameError={nameError}
+                />
                 <PlatformSelection
                   handlePlatform={handlePlatform}
                   platform={platform}
+                  platformError={platformError}
                 />
                 <div className="control" />
                 <input
@@ -69,6 +102,7 @@ const UserForm = props => {
                   className="button is-link"
                   style={{ margin: "5px 0px 5px 0" }}
                   value="Search Player"
+                  disabled={platformError || nameError ? true : false}
                 />
               </form>
             </div>

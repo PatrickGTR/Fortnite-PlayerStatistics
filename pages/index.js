@@ -7,9 +7,12 @@ import "react-bulma-components/dist/react-bulma-components.min.css";
 import UserForm from "../components/userForm";
 import UserStats from "../components/userStats";
 
-import fetch from "isomorphic-unfetch";
+import {
+  getUserAccountID,
+  getUserAccountData
+} from "../components/stats/getUserData";
 
-const Index = ({ data }) => {
+const Index = ({ data, error }) => {
   return (
     <>
       <Head>
@@ -31,58 +34,28 @@ const Index = ({ data }) => {
 
         <UserForm />
 
-        {data === undefined ? null : <UserStats user={data} />}
+        {data === undefined ? null : <UserStats user={data} error={error} />}
       </div>
     </>
   );
 };
 
 Index.getInitialProps = async ({ query }) => {
-  console.log(query.username);
-  console.log(query.platform);
-
   if (query.username === undefined || query.platform === "none") {
-    return {
-      error: true,
-      message: "username and platform is undefined."
+    return {};
+  }
+
+  const accountid = await getUserAccountID(query.username);
+  const data = await getUserAccountData(accountid, query.platform);
+
+  let error = null;
+  if (accountid == -1 || data == -1) {
+    error = {
+      message: `could not retrieve ${query.username}'s data.`
     };
   }
 
-  const retrieveNameURL = encodeURI(
-    `https://fortnite-api.theapinetwork.com/users/id?username=${query.username}`
-  );
-
-  let res;
-  let data;
-  res = await fetch(retrieveNameURL, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "ec05f7844418ef86e1bb3ee456d21162"
-    }
-  });
-  data = await res.json();
-  const accountid = data.data.uid;
-
-  console.log(accountid);
-
-  const retrieveAccountDataURL = `https://fortnite-api.theapinetwork.com/prod09/users/public/br_stats?user_id=${accountid}&platform=${
-    query.platform
-  }`;
-
-  res = undefined;
-  data = undefined;
-
-  res = await fetch(retrieveAccountDataURL, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "ec05f7844418ef86e1bb3ee456d21162"
-    }
-  });
-  data = await res.json();
-
-  return { data };
+  return { data, error };
 };
 
 export default Index;
