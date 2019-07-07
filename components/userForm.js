@@ -1,92 +1,59 @@
 import React, { useState } from "react";
+import Router from "next/router";
 
-const PlatformSelection = ({ platform, handlePlatform, platformError }) => {
-  return (
-    <div className="field">
-      <label className="label">Platform</label>
-      <div className="control">
-        <div className="select">
-          <select onChange={handlePlatform} value={platform} name="platform">
-            <option value="none">Select Platform</option>
-            <option value="pc">PC</option>
-            <option value="ps4">Playstation 4</option>
-            <option value="xb1">Xbox Live</option>
-          </select>
-        </div>
-      </div>
-      {platformError && (
-        <p className="help is-danger">Please select platform.</p>
-      )}
-    </div>
-  );
-};
+const useFormInput = (callback, initialValue = {}, validator) => {
+  const [value, setValue] = useState(initialValue);
+  const [error, setError] = useState({});
 
-const UsernameForm = ({ handleNameChange, name, nameError }) => {
-  return (
-    <div className="field">
-      <label className="label">Username</label>
-      <div className="control has-icons-left has-icons-right">
-        <input
-          onChange={handleNameChange}
-          className="input is-success"
-          type="text"
-          placeholder="Username..."
-          value={name}
-          name="username"
-        />
-        <span className="icon is-small is-left">
-          <i className="fas fa-user" />
-        </span>
-      </div>
-      {nameError && (
-        <p className="help is-danger">Please fill out this field.</p>
-      )}
-    </div>
-  );
+  const onChange = event => {
+    setValue({ ...value, [event.target.name]: event.target.value });
+  };
+
+  const onSubmit = event => {
+    event.preventDefault();
+
+    if (Object.keys(validator(value)).length === 0) {
+      callback();
+      setValue(initialValue);
+      setError({});
+    } else {
+      setError(validator(value));
+    }
+  };
+
+  return {
+    onChange,
+    onSubmit,
+    value,
+    error
+  };
 };
 
 const UserForm = () => {
-  const [platform, setPlatform] = useState("Select Platform");
-  const [name, setName] = useState("");
-  const [platformError, setPlatformError] = useState(false);
-  const [nameError, setNamError] = useState(false);
-
-  const handleClick = event => {
-    event.preventDefault();
-
-    if (name === "" || platform === "none") {
-      setPlatformError(true);
-      setNamError(true);
-      return;
+  const ValidateFormInput = value => {
+    let error = {};
+    if (value.platform === "none") {
+      error.platform = "Please select your platform.";
     }
 
-    window.location.replace(`/?username=${name}&platform=${platform}`);
+    if (value.username.trim() === "") {
+      error.username = "Please insert your Fortnite username.";
+    }
+    return error;
   };
 
-  const handlePlatform = event => {
-    const platform = event.target.value;
-
-    if (platform === "none") {
-      setPlatformError(true);
-    }
-    if (platformError) {
-      setPlatformError(false);
-    }
-
-    setPlatform(platform);
+  const redirectUser = () => {
+    Router.push(`/?username=${value.username}&platform=${value.platform}`);
   };
-  const handleNameChange = event => {
-    const username = event.target.value;
 
-    if (username === "") {
-      setNamError(true);
-    }
-    if (nameError) {
-      setNamError(false);
-    }
-
-    setName(username);
-  };
+  const { value, error, onChange, onSubmit } = useFormInput(
+    redirectUser,
+    {
+      username: "",
+      platform: "none"
+    },
+    ValidateFormInput
+  );
 
   return (
     <>
@@ -96,26 +63,56 @@ const UserForm = () => {
             <div className="message-header">
               <p>Search Players</p>
             </div>
-            <div className="message-body">
-              <form method="GET" action="/">
-                <UsernameForm
-                  handleNameChange={handleNameChange}
-                  name={name}
-                  nameError={nameError}
-                />
-                <PlatformSelection
-                  handlePlatform={handlePlatform}
-                  platform={platform}
-                  platformError={platformError}
-                />
+            <div method="GET" action="/" className="message-body">
+              <form onSubmit={onSubmit}>
+                <div className="field">
+                  <label className="label">Username</label>
+                  <div className="control has-icons-left has-icons-right">
+                    <input
+                      value={value.username}
+                      onChange={onChange}
+                      className="input is-success"
+                      type="text"
+                      placeholder="Username..."
+                      name="username"
+                    />
+                    <span className="icon is-small is-left">
+                      <i className="fas fa-user" />
+                    </span>
+                  </div>
+                  {error.username && (
+                    <p className="help is-danger">
+                      Please fill out this field.
+                    </p>
+                  )}
+                </div>
+
+                <div className="field">
+                  <label className="label">Platform</label>
+                  <div className="control">
+                    <div className="select">
+                      <select
+                        value={value.platform}
+                        onChange={onChange}
+                        name="platform"
+                      >
+                        <option value="none">Select Platform</option>
+                        <option value="pc">PC</option>
+                        <option value="ps4">Playstation 4</option>
+                        <option value="xb1">Xbox Live</option>
+                      </select>
+                    </div>
+                  </div>
+                  {error.platform && (
+                    <p className="help is-danger">Please select platform.</p>
+                  )}
+                </div>
                 <div className="control" />
                 <input
                   type="submit"
-                  onClick={handleClick}
                   className="button is-link"
                   style={{ margin: "5px 0px 5px 0" }}
                   value="Search Player"
-                  disabled={platformError || nameError ? true : false}
                 />
               </form>
             </div>

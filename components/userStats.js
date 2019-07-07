@@ -38,13 +38,13 @@ const UserStats = ({ user, error }) => {
 
   return (
     <>
-      <h1 className="title">{user.username}'s Statistic</h1>
+      <h1 className="title">{user.username}'s Statistics</h1>
       <h1 className="subtitle">Platform: {platform}</h1>
 
       <div className="container">
         <div className="columns">
           <div className="column">
-            <article className="message is-danger">
+            <article className="message is-success">
               <div className="message-header">
                 <p>SOLO</p>
               </div>

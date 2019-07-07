@@ -1,7 +1,7 @@
 {
     "version": 2,
-    "name": "fornitestats",
-    "alias": "fornitestats",
+    "name": "fortnitestats",
+    "alias": "fortnitestats",
     "builds": [
         { "src": "next.config.js", "use": "@now/next" }
     ]
