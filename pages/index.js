@@ -6,7 +6,9 @@ import "react-bulma-components/dist/react-bulma-components.min.css";
 
 import UserForm from "../components/userForm";
 import UserStats from "../components/userStats";
-import { DailyItems, FeaturedItems } from "../components/storeItems";
+
+import getStoreData from "../components/store/getStoreData";
+import { DailyItems, FeaturedItems } from "../components/store/storeItems";
 
 import {
   getUserAccountID,
@@ -75,15 +77,7 @@ const Index = ({ accountData, error, storeData }) => {
 };
 
 Index.getInitialProps = async ({ query }) => {
-  const res = await fetch("https://fortnite-api.theapinetwork.com/store/get", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "ec05f7844418ef86e1bb3ee456d21162"
-    }
-  });
-
-  const storeData = await res.json();
+  const storeData = await getStoreData();
 
   if (query.username === undefined || query.platform === "none") {
     return { storeData };

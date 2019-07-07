@@ -3,6 +3,7 @@ import React from "react";
 import SoloStats from "./stats/soloStats";
 import DuoStats from "./stats/duoStats";
 import SquadStats from "./stats/squadStats";
+import TotalStats from "./stats/totalStats";
 
 const UserStats = ({ user, error }) => {
   if (error) {
@@ -89,20 +90,11 @@ const UserStats = ({ user, error }) => {
           <div className="column">
             <article className="message is-warning">
               <div className="message-header">
-                <p>Total</p>
+                <p>TOTAL STATS</p>
               </div>
               <div className="message-body">
                 <div className="list is-hoverable">
-                  <span className="list-item">Kills: 17</span>
-                  <span className="list-item">Wins: 6127</span>
-                  <span className="list-item">Matches Played: 17247</span>
-                  <span className="list-item">Minutes Played: 50091</span>
-                  <span className="list-item">
-                    Top 5 - {data.placetop5_duo}
-                  </span>
-                  <span className="list-item">
-                    Top 12 - {data.placetop12_duo}
-                  </span>
+                  <TotalStats data={user.totals} />
                 </div>
               </div>
             </article>
