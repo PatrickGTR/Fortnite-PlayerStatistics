@@ -3,7 +3,6 @@ import Head from "next/head";
 import Router from "next/router";
 
 import "react-bulma-components/dist/react-bulma-components.min.css";
-import "../components/style.css";
 
 import UserForm from "../components/userForm";
 import UserStats from "../components/userStats";
@@ -22,6 +21,7 @@ const Index = ({ accountData, error, storeData }) => {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
         />
+        <link rel="stylesheet" href="/static/style.css" />
         <script
           defer
           src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
@@ -51,18 +51,22 @@ const Index = ({ accountData, error, storeData }) => {
           <UserStats user={accountData} error={error} />
         )}
       </div>
+
       <footer style={{ marginTop: "30px" }}>
         <div className="content has-text-centered">
           <p>
-            <strong>Fortnite Statistics</strong> by{" "}
-            <a
-              href="https://patrickgtr.github.io"
-              target="_blank"
-              rel="noopener"
-            >
-              Patrick Subang
-            </a>{" "}
-            &copy; 2019
+            <strong style={{ color: "white", textShadow: "1px 1px black" }}>
+              Fortnite Statistics by{" "}
+              <a
+                style={{ color: "gold" }}
+                href="https://patrickgtr.github.io"
+                target="_blank"
+                rel="noopener"
+              >
+                Patrick Subang
+              </a>{" "}
+              &copy; 2019
+            </strong>
           </p>
         </div>
       </footer>
