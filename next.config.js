@@ -1,4 +1,7 @@
 const withCSS = require("@zeit/next-css");
+require("dotenv").config();
+
+console.log(process.env.FORTNITE_API_KEY);
 
 module.exports = withCSS({
   target: "serverless",
