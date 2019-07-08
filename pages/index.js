@@ -57,7 +57,7 @@ const Index = ({ accountData, error, storeData }) => {
         )}
         {accountData !== undefined && (
           <a href="/">
-            <button style={{ marginTop: "10px" }} class="button is-info">
+            <button style={{ marginTop: "10px" }} className="button is-info">
               Go back!
             </button>
           </a>
