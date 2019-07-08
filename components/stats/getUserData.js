@@ -4,7 +4,7 @@ const requestData = {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
-    Authorization: "ec05f7844418ef86e1bb3ee456d21162"
+    Authorization: process.env.FORTNITE_API_KEY
   }
 };
 
