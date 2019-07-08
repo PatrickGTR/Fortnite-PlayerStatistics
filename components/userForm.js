@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Router from "next/router";
 
 const useFormInput = (callback, initialValue = {}, validator) => {
   const [value, setValue] = useState(initialValue);
@@ -43,7 +42,9 @@ const UserForm = () => {
   };
 
   const redirectUser = () => {
-    Router.push(`/?username=${value.username}&platform=${value.platform}`);
+    window.location.replace(
+      `/?username=${value.username}&platform=${value.platform}`
+    );
   };
 
   const { value, error, onChange, onSubmit } = useFormInput(

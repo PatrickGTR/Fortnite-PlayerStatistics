@@ -10,7 +10,7 @@ const requestData = {
 
 const getUserAccountID = async username => {
   const retrieveNameURL = encodeURI(
-    `https://fortnite-api.theapinetwork.com/users/id?username=${username}`
+    `https://fortnite-api.theapinetwork.com/users/id?username=${username.trim()}`
   );
 
   const res = await fetch(retrieveNameURL, requestData);

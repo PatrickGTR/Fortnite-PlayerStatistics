@@ -6,7 +6,7 @@ import SquadStats from "./stats/squadStats";
 import TotalStats from "./stats/totalStats";
 
 const UserStats = ({ user, error }) => {
-  if (error) {
+  if (error !== null) {
     return (
       <div className="notification is-danger">
         <button className="delete" />

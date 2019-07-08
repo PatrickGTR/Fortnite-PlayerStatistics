@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Head from "next/head";
-import Router from "next/router";
 
 import "react-bulma-components/dist/react-bulma-components.min.css";
 
