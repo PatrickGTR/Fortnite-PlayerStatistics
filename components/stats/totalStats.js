@@ -3,12 +3,44 @@ import React from "react";
 const TotalStats = ({ data }) => {
   return (
     <>
-      <span className="list-item">Matches Played: {data.matchesplayed}</span>
-      <span className="list-item">KD: {data.kd}</span>
-      <span className="list-item">Kills: {data.kills}</span>
-      <span className="list-item">Wins: {data.wins}</span>
-      <span className="list-item">Time Played: {data.hoursplayed} hours</span>
-      <span className="list-item">Win Rate: {data.winrate}%</span>
+      <div className="column">
+        <article className="message is-warning">
+          <div className="message-header">
+            <p>TOTAL</p>
+            <p style={{ fontStyle: "italic" }}>{data.matchesplayed} Matches</p>
+          </div>
+          <div className="message-body">
+            <div className="list is-hoverable">
+              <span className="list-item">
+                <i
+                  style={{ marginRight: "15px" }}
+                  className="fas fa-percentage"
+                />
+                KD: {data.kd}
+              </span>
+              <span className="list-item">
+                <i style={{ marginRight: "15px" }} className="fas fa-skull" />
+                Kills: {data.kills}
+              </span>
+              <span className="list-item">
+                <i style={{ marginRight: "15px" }} className="fas fa-trophy" />
+                Wins: {data.wins}
+              </span>
+              <span className="list-item">
+                <i style={{ marginRight: "15px" }} class="fas fa-city" />
+                Win Rate: {data.winrate}%
+              </span>
+              <span className="list-item">
+                <i
+                  style={{ marginRight: "15px" }}
+                  className="fas fa-stopwatch"
+                />
+                Time Played: {data.hoursplayed} hours
+              </span>
+            </div>
+          </div>
+        </article>
+      </div>
     </>
   );
 };

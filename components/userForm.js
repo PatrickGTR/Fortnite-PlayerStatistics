@@ -50,11 +50,10 @@ const UserForm = () => {
     return error;
   };
 
-  const redirectUser = () => {
+  const redirectUser = () =>
     window.location.replace(
-      `/?username=${value.username}&platform=${value.platform}`
+      `/?username=${value.username.trim()}&platform=${value.platform}`
     );
-  };
 
   const { value, error, onChange, onSubmit } = useFormInput(
     redirectUser,
@@ -83,7 +82,9 @@ const UserForm = () => {
                         <input
                           value={value.username}
                           onChange={onChange}
-                          className="input is-success"
+                          className={
+                            error.username ? "input is-danger" : "input"
+                          }
                           type="text"
                           placeholder="Username..."
                           name="username"
@@ -102,6 +103,9 @@ const UserForm = () => {
                       <div className="control">
                         <div className="select">
                           <select
+                            className={
+                              error.platform ? "input is-danger" : "input"
+                            }
                             value={value.platform}
                             onChange={onChange}
                             name="platform"

@@ -54,51 +54,10 @@ const UserStats = ({ user, error }) => {
 
       <div className="container">
         <div className="columns">
-          <div className="column">
-            <article className="message is-success">
-              <div className="message-header">
-                <p>SOLO</p>
-              </div>
-              <div className="message-body">
-                <SoloStats data={user.stats} />
-              </div>
-            </article>
-          </div>
-          <div className="column">
-            <article className="message is-info">
-              <div className="message-header">
-                <p>DUO</p>
-              </div>
-              <div className="message-body">
-                <DuoStats data={user.stats} />
-              </div>
-            </article>
-          </div>
-          <div className="column">
-            <article className="message">
-              <div
-                style={{ backgroundColor: "purple" }}
-                className="message-header"
-              >
-                <p>SQUAD</p>
-              </div>
-              <div className="message-body">
-                <SquadStats data={user.stats} />
-              </div>
-            </article>
-          </div>
-          <div className="column">
-            <article className="message is-warning">
-              <div className="message-header">
-                <p>TOTAL STATS</p>
-              </div>
-              <div className="message-body">
-                <div className="list is-hoverable">
-                  <TotalStats data={user.totals} />
-                </div>
-              </div>
-            </article>
-          </div>
+          <SoloStats data={user.stats} />
+          <DuoStats data={user.stats} />
+          <SquadStats data={user.stats} />
+          <TotalStats data={user.totals} />
         </div>
       </div>
     </>
