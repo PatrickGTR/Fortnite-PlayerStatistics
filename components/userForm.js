@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 
+/**
+    A custom Hook -> (Mainly use for forms that requires validation)
+    @function useFormInput
+    @param callback --> This will call the function if no error occured.
+    @param initialValue --> Default value of the object passed to the parameter.
+    @param validator --> The setting that checks for error.
+    @return onChange, onSubmit, value, error
+ */
+
 const useFormInput = (callback, initialValue = {}, validator) => {
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState({});
@@ -84,9 +93,7 @@ const UserForm = () => {
                         </span>
                       </div>
                       {error.username && (
-                        <p className="help is-danger">
-                          Please fill out this field.
-                        </p>
+                        <p className="help is-danger">{error.username}</p>
                       )}
                     </div>
 
@@ -107,9 +114,7 @@ const UserForm = () => {
                         </div>
                       </div>
                       {error.platform && (
-                        <p className="help is-danger">
-                          Please select platform.
-                        </p>
+                        <p className="help is-danger">{error.platform}</p>
                       )}
                     </div>
                   </div>

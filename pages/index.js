@@ -1,14 +1,33 @@
-import React, { useState } from "react";
-import Head from "next/head";
-import Router from "next/router";
+/**
+ * @todo -> Add option to change background colour.
+ * @todo -> Add fortnite news.
+ * @todo -> Add fortnite challenges.
+ */
 
+import React from "react";
+
+// --
+// Style
+// --
 import "react-bulma-components/dist/react-bulma-components.min.css";
 
-import UserForm from "../components/userForm";
-import UserStats from "../components/userStats";
+// --
+// Body
+// --
+import HeadContent from "../components/headContent";
+import FooterContent from "../components/footerContent";
 
+// --
+// Store
+// --
 import getStoreData from "../components/store/getStoreData";
 import { DailyItems, FeaturedItems } from "../components/store/storeItems";
+
+// --
+// User
+// --
+import UserForm from "../components/userForm";
+import UserStats from "../components/userStats";
 
 import {
   getUserAccountID,
@@ -18,19 +37,7 @@ import {
 const Index = ({ accountData, error, storeData }) => {
   return (
     <>
-      <Head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
-        />
-        <link rel="stylesheet" href="/static/style.css" />
-        <script
-          defer
-          src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
-        />
-        <title>Fortnite Statistics</title>
-      </Head>
-
+      <HeadContent />
       <div className="container">
         {accountData === undefined && (
           <div style={{ marginTop: "5px" }} className="columns is-centered">
@@ -48,40 +55,19 @@ const Index = ({ accountData, error, storeData }) => {
             </div>
           </div>
         )}
-
         {accountData !== undefined && (
           <a href="/">
             <button style={{ marginTop: "10px" }} class="button is-info">
-              Back to home
+              Go back!
             </button>
           </a>
         )}
-
         <UserForm />
-
         {accountData === undefined ? null : (
           <UserStats user={accountData} error={error} />
         )}
       </div>
-
-      <footer style={{ marginTop: "30px" }}>
-        <div className="content has-text-centered">
-          <p>
-            <strong style={{ color: "white", textShadow: "1px 1px black" }}>
-              Fortnite Statistics by{" "}
-              <a
-                style={{ color: "gold" }}
-                href="https://patrickgtr.github.io"
-                target="_blank"
-                rel="noopener"
-              >
-                Patrick Subang
-              </a>{" "}
-              &copy; 2019
-            </strong>
-          </p>
-        </div>
-      </footer>
+      <FooterContent />
     </>
   );
 };
@@ -90,6 +76,7 @@ Index.getInitialProps = async ({ query }) => {
   const storeData = await getStoreData();
 
   if (query.username === undefined || query.platform === "none") {
+    // only return the storeData if username or platform is empty.
     return { storeData };
   }
 
