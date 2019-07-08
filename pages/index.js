@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Head from "next/head";
+import Router from "next/router";
 
 import "react-bulma-components/dist/react-bulma-components.min.css";
 
@@ -31,20 +32,30 @@ const Index = ({ accountData, error, storeData }) => {
       </Head>
 
       <div className="container">
-        <div style={{ marginTop: "5px" }} className="columns is-centered">
-          <div style={{ textAlign: "center" }} className="column">
-            <div className="box">
-              <h1 className="shop-title">Featured Items</h1>
-              <FeaturedItems store={storeData} />
+        {accountData === undefined && (
+          <div style={{ marginTop: "5px" }} className="columns is-centered">
+            <div style={{ textAlign: "center" }} className="column">
+              <div className="box">
+                <h1 className="shop-title">Featured Items</h1>
+                <FeaturedItems store={storeData} />
+              </div>
+            </div>
+            <div style={{ textAlign: "center" }} className="column">
+              <div className="box">
+                <h1 className="shop-title">Daily Items</h1>
+                <DailyItems store={storeData} />
+              </div>
             </div>
           </div>
-          <div style={{ textAlign: "center" }} className="column">
-            <div className="box">
-              <h1 className="shop-title">Daily Items</h1>
-              <DailyItems store={storeData} />
-            </div>
-          </div>
-        </div>
+        )}
+
+        {accountData !== undefined && (
+          <a href="/">
+            <button style={{ marginTop: "10px" }} class="button is-info">
+              Back to home
+            </button>
+          </a>
+        )}
 
         <UserForm />
 
