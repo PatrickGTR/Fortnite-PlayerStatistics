@@ -55,15 +55,19 @@ const Index = ({ accountData, error, storeData }) => {
             </div>
           </div>
         )}
-        {accountData !== undefined && (
+
+        {// Go back button.
+        accountData !== undefined && (
           <a href="/">
             <button style={{ marginTop: "10px" }} className="button is-info">
               Go back!
             </button>
           </a>
         )}
+
         <UserForm />
-        {accountData === undefined ? null : (
+        {// Show stats
+        accountData === undefined ? null : (
           <UserStats user={accountData} error={error} />
         )}
       </div>
