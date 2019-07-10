@@ -2,7 +2,6 @@
 // Main
 // --
 import React from "react";
-import Link from "next/link";
 
 // --
 // Style
@@ -14,6 +13,7 @@ import "react-bulma-components/dist/react-bulma-components.min.css";
 // --
 import HeadContent from "../components/headContent";
 import FooterContent from "../components/footerContent";
+import NavContent from "../components/navContent";
 
 const PageLayout = ({ children }) => {
   return (
@@ -21,30 +21,10 @@ const PageLayout = ({ children }) => {
       <HeadContent />
       <section className="section">
         <div className="container">
-          <nav
-            className="has-text-centered"
-            style={{
-              padding: "20px"
-            }}
-          >
-            <Link href="/">
-              <a>
-                <button
-                  style={{ marginRight: "10px" }}
-                  className="button is-link"
-                >
-                  Homepage
-                </button>
-              </a>
-            </Link>
-            <Link href="/news">
-              <a>
-                <button className="button is-link">News</button>
-              </a>
-            </Link>
-          </nav>
-
           {children}
+          <nav className="has-text-centered" style={{ margin: "20px" }}>
+            <NavContent />
+          </nav>
         </div>
       </section>
       <FooterContent />

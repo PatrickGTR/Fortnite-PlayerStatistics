@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+import fetch from "isomorphic-unfetch";
 
 import Moment from "react-moment";
 
@@ -52,7 +52,12 @@ const News = ({ news }) => {
                         >
                           {item.title.toUpperCase()}
                         </h1>
-                        <h1 className="subtitle has-text-left">{item.body}</h1>
+                        <h1
+                          className="subtitle has-text-left"
+                          style={{ fontFamily: "Burbank Big Condensed" }}
+                        >
+                          {item.body}
+                        </h1>
                       </div>
                     </article>
                   </div>

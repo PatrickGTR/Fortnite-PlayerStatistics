@@ -30,7 +30,7 @@ html {
 }
 
 .shop-images {
-    width: 130px;
+    width: 150px;
     text-align: center;
     align-content: center;
 }
@@ -47,4 +47,19 @@ html {
     border-radius: 5px;
     color: white;
     margin-bottom: 5px;
+}
+
+.fnbutton {
+    font-size: 50px;
+    font-family: "Burbank Big Condensed";
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    padding: 10px 100px 5px 100px;
+    margin-right: 20px;
+    color: white;
+}
+
+.fnbutton:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
 }

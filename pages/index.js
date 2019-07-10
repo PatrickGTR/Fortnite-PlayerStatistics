@@ -13,12 +13,6 @@ import PageLayout from "../components/PageLayout";
 // --
 
 // --
-// Store
-// --
-import { DailyItems, FeaturedItems } from "../components/store/storeItems";
-import getStoreData from "../components/store/getStoreData";
-
-// --
 // User
 // --
 import {
@@ -28,27 +22,10 @@ import {
 import UserForm from "../components/userForm";
 import UserStats from "../components/userStats";
 
-const Index = ({ accountData, error, storeData }) => {
+const Index = ({ accountData, error }) => {
   return (
     <PageLayout>
       <UserForm />
-
-      {accountData === undefined && (
-        <div className="columns">
-          <div style={{ textAlign: "center" }} className="column">
-            <div className="box">
-              <h1 className="shop-title">Featured Items</h1>
-              <FeaturedItems store={storeData} />
-            </div>
-          </div>
-          <div style={{ textAlign: "center" }} className="column">
-            <div className="box">
-              <h1 className="shop-title">Daily Items</h1>
-              <DailyItems store={storeData} />
-            </div>
-          </div>
-        </div>
-      )}
 
       {// Show stats
       accountData === undefined ? null : (
@@ -59,11 +36,8 @@ const Index = ({ accountData, error, storeData }) => {
 };
 
 Index.getInitialProps = async ({ query }) => {
-  const storeData = await getStoreData();
-
   if (query.username === undefined || query.platform === "none") {
-    // only return the storeData if username or platform is empty.
-    return { storeData };
+    return {};
   }
 
   const accountid = await getUserAccountID(query.username);
@@ -76,7 +50,7 @@ Index.getInitialProps = async ({ query }) => {
     };
   }
 
-  return { accountData, error, storeData };
+  return { accountData, error };
 };
 
 export default Index;
