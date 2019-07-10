@@ -1,11 +1,10 @@
 /**
  * @todo -> Add option to change background colour.
- * @todo -> Add fortnite news.
  * @todo -> Add fortnite challenges.
+ * @todo -> Run the request through your own server, resize the images and cache the response
  */
 
 import React from "react";
-import Link from "next/link";
 
 // --
 // Page Template

@@ -1,11 +1,9 @@
 {
-    "env": {
-        "FORTNITE_API_KEY": "@fn_key"
-    },
     "version": 2,
     "name": "fortnitestats",
     "alias": "fortnitestats",
-    "builds": [
-        { "src": "next.config.js", "use": "@now/next" }
-    ]
+    "builds": [{"src": "next.config.js", "use": "@now/next"}],
+    "env": {
+        "FORTNITE_API_KEY": "@fn_key"
+    }
 }
