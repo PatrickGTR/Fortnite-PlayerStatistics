@@ -33,7 +33,7 @@ const DuoStats = ({ data }) => {
                 Top 5 - {data.placetop5_duo}
               </span>
               <span className="list-item">
-                <i style={{ marginRight: "15px" }} class="fas fa-award" />
+                <i style={{ marginRight: "15px" }} className="fas fa-award" />
                 Top 12 - {data.placetop12_duo}
               </span>
             </div>

@@ -1,11 +1,12 @@
 const withCSS = require("@zeit/next-css");
 require("dotenv").config();
-
-console.log(process.env.FORTNITE_API_KEY);
+const path = require("path");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = withCSS({
   target: "serverless",
-  webpack(config) {
+
+  webpack: config => {
     config.module.rules.push({
       test: /\.(png|svg|eot|otf|ttf|woff|woff2)$/,
       use: {
@@ -18,6 +19,17 @@ module.exports = withCSS({
         }
       }
     });
+    config.plugins = config.plugins || [];
+
+    config.plugins = [
+      ...config.plugins,
+
+      // Read the .env file
+      new Dotenv({
+        path: path.join(__dirname, ".env"),
+        systemvars: true
+      })
+    ];
     return config;
   }
 });

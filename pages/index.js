@@ -5,74 +5,74 @@
  */
 
 import React from "react";
+import Link from "next/link";
 
 // --
-// Style
+// Page Template
+import PageLayout from "../components/PageLayout";
 // --
-import "react-bulma-components/dist/react-bulma-components.min.css";
-
-// --
-// Body
-// --
-import HeadContent from "../components/headContent";
-import FooterContent from "../components/footerContent";
 
 // --
 // Store
 // --
-import getStoreData from "../components/store/getStoreData";
 import { DailyItems, FeaturedItems } from "../components/store/storeItems";
+import getStoreData from "../components/store/getStoreData";
 
 // --
 // User
 // --
-import UserForm from "../components/userForm";
-import UserStats from "../components/userStats";
-
 import {
   getUserAccountID,
   getUserAccountData
 } from "../components/stats/getUserData";
+import UserForm from "../components/userForm";
+import UserStats from "../components/userStats";
 
 const Index = ({ accountData, error, storeData }) => {
   return (
-    <>
-      <HeadContent />
-      <div className="container">
-        {accountData === undefined && (
-          <div style={{ marginTop: "5px" }} className="columns is-centered">
-            <div style={{ textAlign: "center" }} className="column">
-              <div className="box">
-                <h1 className="shop-title">Featured Items</h1>
-                <FeaturedItems store={storeData} />
-              </div>
-            </div>
-            <div style={{ textAlign: "center" }} className="column">
-              <div className="box">
-                <h1 className="shop-title">Daily Items</h1>
-                <DailyItems store={storeData} />
-              </div>
+    <PageLayout>
+      {accountData === undefined && (
+        <div style={{ marginTop: "5px" }} className="columns is-centered">
+          <div style={{ textAlign: "center" }} className="column">
+            <div className="box">
+              <h1 className="shop-title">Featured Items</h1>
+              <FeaturedItems store={storeData} />
             </div>
           </div>
-        )}
+          <div style={{ textAlign: "center" }} className="column">
+            <div className="box">
+              <h1 className="shop-title">Daily Items</h1>
+              <DailyItems store={storeData} />
+            </div>
+          </div>
+        </div>
+      )}
 
-        {// Go back button.
-        accountData !== undefined && (
-          <a href="/">
+      {// Go back button.
+      accountData !== undefined && (
+        <Link href="/">
+          <a>
             <button style={{ marginTop: "10px" }} className="button is-info">
               Go back!
             </button>
           </a>
-        )}
+        </Link>
+      )}
 
-        <UserForm />
-        {// Show stats
-        accountData === undefined ? null : (
-          <UserStats user={accountData} error={error} />
-        )}
-      </div>
-      <FooterContent />
-    </>
+      <Link href="/news">
+        <a>
+          <button style={{ marginTop: "10px" }} className="button is-info">
+            Check News
+          </button>
+        </a>
+      </Link>
+
+      <UserForm />
+      {// Show stats
+      accountData === undefined ? null : (
+        <UserStats user={accountData} error={error} />
+      )}
+    </PageLayout>
   );
 };
 

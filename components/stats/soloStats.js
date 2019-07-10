@@ -11,7 +11,7 @@ const SoloStats = ({ data }) => {
               {data.matchesplayed_solo} Matches
             </p>
           </div>
-          <div class="message-body">
+          <div className="message-body">
             <div className="list is-hoverable">
               <span className="list-item">
                 <i
@@ -33,7 +33,7 @@ const SoloStats = ({ data }) => {
                 Top 10 - {data.placetop10_solo}
               </span>
               <span className="list-item">
-                <i style={{ marginRight: "15px" }} class="fas fa-award" />
+                <i style={{ marginRight: "15px" }} className="fas fa-award" />
                 Top 25 - {data.placetop25_solo}
               </span>
             </div>

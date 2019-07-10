@@ -27,7 +27,7 @@ const TotalStats = ({ data }) => {
                 Wins: {data.wins}
               </span>
               <span className="list-item">
-                <i style={{ marginRight: "15px" }} class="fas fa-city" />
+                <i style={{ marginRight: "15px" }} className="fas fa-city" />
                 Win Rate: {data.winrate}%
               </span>
               <span className="list-item">

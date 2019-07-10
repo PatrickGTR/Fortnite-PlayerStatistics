@@ -33,7 +33,7 @@ const SquadStats = ({ data }) => {
                 Top 3 - {data.placetop3_squad}
               </span>
               <span className="list-item">
-                <i style={{ marginRight: "15px" }} class="fas fa-award" />
+                <i style={{ marginRight: "15px" }} className="fas fa-award" />
                 Top 6 - {data.placetop6_squad}
               </span>
             </div>
