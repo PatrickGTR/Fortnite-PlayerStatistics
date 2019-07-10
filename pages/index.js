@@ -19,8 +19,8 @@ import {
   getUserAccountID,
   getUserAccountData
 } from "../components/stats/getUserData";
-import UserForm from "../components/userForm";
-import UserStats from "../components/userStats";
+import UserForm from "../components/UserForm";
+import UserStats from "../components/UserStats";
 
 const Index = ({ accountData, error }) => {
   return (

@@ -1,9 +1,9 @@
 import React from "react";
 
-import SoloStats from "./stats/soloStats";
-import DuoStats from "./stats/duoStats";
-import SquadStats from "./stats/squadStats";
-import TotalStats from "./stats/totalStats";
+import SoloStats from "./stats/SoloStats";
+import DuoStats from "./stats/DuoStats";
+import SquadStats from "./stats/SquadStats";
+import TotalStats from "./stats/TotalStats";
 
 const UserStats = ({ user, error }) => {
   if (error !== null) {

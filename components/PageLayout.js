@@ -11,9 +11,9 @@ import "react-bulma-components/dist/react-bulma-components.min.css";
 // --
 // Body
 // --
-import HeadContent from "../components/headContent";
-import FooterContent from "../components/footerContent";
-import NavContent from "../components/navContent";
+import HeadContent from "./HeadContent";
+import FooterContent from "./FooterContent";
+import NavContent from "./NavContent";
 
 const PageLayout = ({ children }) => {
   return (
