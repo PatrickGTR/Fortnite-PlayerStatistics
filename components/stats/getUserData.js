@@ -3,7 +3,6 @@ import fetch from "isomorphic-unfetch";
 const requestData = {
   method: "GET",
   headers: {
-    "Content-Type": "application/json",
     Authorization: process.env.FORTNITE_API_KEY
   }
 };

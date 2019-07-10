@@ -6,7 +6,7 @@ import Moment from "react-moment";
 import Loader from "../components/Loader";
 import PageLayout from "../components/PageLayout";
 
-const News = ({ news }) => {
+const News = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState({});
 
@@ -17,7 +17,6 @@ const News = ({ news }) => {
         {
           method: "GET",
           headers: {
-            "Content-Type": "application/json",
             Authorization: process.env.FORTNITE_API_KEY
           }
         }
@@ -49,51 +48,47 @@ const News = ({ news }) => {
 
         <div className="columns">
           {!isLoading &&
-            data.data
-              .map((item, index) => {
-                return (
-                  index <= 2 && (
-                    <div key={index} className="column has-text-centered">
-                      <article
-                        className="message is-link"
-                        style={{ height: "100%" }}
-                      >
-                        <div className="message-header">
-                          <p>
-                            {item.meta.adSpace !== null
-                              ? item.meta.adSpace
-                              : ""}
-                          </p>
-                          <p>
-                            <strong>
-                              <Moment format=" DD MMMM, YYYY" unix>
-                                {item.time}
-                              </Moment>
-                            </strong>
-                          </p>
-                        </div>
-                        <div className="message-body">
-                          <img style={{ height: "200px" }} src={item.image} />
+            data.data.map((item, index) => {
+              return (
+                index <= 2 && (
+                  <div key={index} className="column has-text-centered">
+                    <article
+                      className="message is-link"
+                      style={{ height: "100%" }}
+                    >
+                      <div className="message-header">
+                        <p>
+                          {item.meta.adSpace !== null ? item.meta.adSpace : ""}
+                        </p>
+                        <p>
+                          <strong>
+                            <Moment format=" DD MMMM, YYYY" unix>
+                              {item.time}
+                            </Moment>
+                          </strong>
+                        </p>
+                      </div>
+                      <div className="message-body">
+                        <img style={{ height: "200px" }} src={item.image} />
 
-                          <h1
-                            className="title has-text-left"
-                            style={{ fontFamily: "Burbank Big Condensed" }}
-                          >
-                            {item.title.toUpperCase()}
-                          </h1>
-                          <h1
-                            className="subtitle has-text-left"
-                            style={{ fontFamily: "Burbank Big Condensed" }}
-                          >
-                            {item.body}
-                          </h1>
-                        </div>
-                      </article>
-                    </div>
-                  )
-                );
-              })
-              .reverse()}
+                        <h1
+                          className="title has-text-left"
+                          style={{ fontFamily: "Burbank Big Condensed" }}
+                        >
+                          {item.title.toUpperCase()}
+                        </h1>
+                        <h1
+                          className="subtitle has-text-left"
+                          style={{ fontFamily: "Burbank Big Condensed" }}
+                        >
+                          {item.body}
+                        </h1>
+                      </div>
+                    </article>
+                  </div>
+                )
+              );
+            })}
         </div>
       </PageLayout>
     </>
