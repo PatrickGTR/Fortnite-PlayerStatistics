@@ -66,7 +66,7 @@ const UserForm = () => {
 
   return (
     <>
-      <div className="columns" style={{ marginTop: "10px" }}>
+      <div className="columns">
         <div className="column is-half is-offset-one-quarter">
           <article className="message is-info">
             <div className="message-header">

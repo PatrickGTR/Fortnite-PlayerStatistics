@@ -31,8 +31,10 @@ import UserStats from "../components/userStats";
 const Index = ({ accountData, error, storeData }) => {
   return (
     <PageLayout>
+      <UserForm />
+
       {accountData === undefined && (
-        <div style={{ marginTop: "5px" }} className="columns is-centered">
+        <div className="columns">
           <div style={{ textAlign: "center" }} className="column">
             <div className="box">
               <h1 className="shop-title">Featured Items</h1>
@@ -48,26 +50,6 @@ const Index = ({ accountData, error, storeData }) => {
         </div>
       )}
 
-      {// Go back button.
-      accountData !== undefined && (
-        <Link href="/">
-          <a>
-            <button style={{ marginTop: "10px" }} className="button is-info">
-              Go back!
-            </button>
-          </a>
-        </Link>
-      )}
-
-      <Link href="/news">
-        <a>
-          <button style={{ marginTop: "10px" }} className="button is-info">
-            Check News
-          </button>
-        </a>
-      </Link>
-
-      <UserForm />
       {// Show stats
       accountData === undefined ? null : (
         <UserStats user={accountData} error={error} />

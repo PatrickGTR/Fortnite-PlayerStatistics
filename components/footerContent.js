@@ -1,6 +1,6 @@
 import React from "react";
 const FooterContent = () => (
-  <footer style={{ marginTop: "30px" }}>
+  <footer>
     <div className="content has-text-centered">
       <p>
         <strong style={{ color: "white", textShadow: "1px 1px black" }}>

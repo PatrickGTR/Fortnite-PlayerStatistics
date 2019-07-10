@@ -2,9 +2,21 @@
     margin: 0;
 }
 
+@font-face {font-family: "Burbank Big Condensed";
+    src: url("//db.onlinewebfonts.com/t/800e985f75a5a56c2f7b4be502d286de.eot");
+    src: url("//db.onlinewebfonts.com/t/800e985f75a5a56c2f7b4be502d286de.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/800e985f75a5a56c2f7b4be502d286de.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/800e985f75a5a56c2f7b4be502d286de.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/800e985f75a5a56c2f7b4be502d286de.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/800e985f75a5a56c2f7b4be502d286de.svg#Burbank Big Condensed") format("svg");
+}
+
+
+
 html, body {
     height:100%;
 }
+
 
 html {
     background: url(/static/body2.png) no-repeat center center fixed;
