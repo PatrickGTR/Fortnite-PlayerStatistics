@@ -38,7 +38,6 @@ const useFormInput = (callback, initialValue = {}, validator) => {
 };
 
 const UserForm = ({ inputUsername, inputPlatform }) => {
-  console.log("UserForm", inputPlatform);
   const ValidateFormInput = value => {
     let error = {};
     if (value.platform === "none") {

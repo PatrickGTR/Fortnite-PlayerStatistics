@@ -1,11 +1,6 @@
 /**
  * @todo -> Add option to change background colour.
  * @todo -> Add fortnite challenges.
- * @todo -> Run the request through your own server, resize the images and cache the response
- * @todo -> Add a state property for the platform. Just have it stored so I don't have to keep swapping for multiple players with the same platform
-                (when user clicks a platform, keep the platform as it is and not reset to default)
-
-
  */
 
 import React from "react";
@@ -22,7 +17,6 @@ import UserForm from "../components/UserForm";
 import UserStats from "../components/UserStats";
 
 const Index = ({ accountData, error, query }) => {
-  console.log("index: ", query.platform);
   return (
     <PageLayout>
       <UserForm inputUsername={query.username} inputPlatform={query.platform} />
