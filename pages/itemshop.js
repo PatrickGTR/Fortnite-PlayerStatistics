@@ -25,14 +25,16 @@ const ItemShop = () => {
       ) : (
         <>
           <h1 className="title">WIP! (Redesigning)</h1>
-          <div className="columns">
-            <div style={{ textAlign: "center" }} className="column">
+
+          <div className="columns has-text-centered">
+            <div className="column">
               <div className="box">
                 <h1 className="shop-title">Featured Items</h1>
                 <FeaturedItems store={data} />
               </div>
             </div>
-            <div style={{ textAlign: "center" }} className="column">
+
+            <div className="column">
               <div className="box">
                 <h1 className="shop-title">Daily Items</h1>
                 <DailyItems store={data} />

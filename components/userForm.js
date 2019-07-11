@@ -37,7 +37,8 @@ const useFormInput = (callback, initialValue = {}, validator) => {
   };
 };
 
-const UserForm = () => {
+const UserForm = ({ inputUsername, inputPlatform }) => {
+  console.log("UserForm", inputPlatform);
   const ValidateFormInput = value => {
     let error = {};
     if (value.platform === "none") {
@@ -58,8 +59,8 @@ const UserForm = () => {
   const { value, error, onChange, onSubmit } = useFormInput(
     redirectUser,
     {
-      username: "",
-      platform: "none"
+      username: inputUsername,
+      platform: inputPlatform
     },
     ValidateFormInput
   );

@@ -30,7 +30,7 @@ html {
 }
 
 .shop-images {
-    width: 150px;
+    width: 160px;
     text-align: center;
     align-content: center;
 }
@@ -39,6 +39,17 @@ html {
     font-size: 30px;
     text-align: center;
 }
+
+
+  .text-block {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
 .stats-title {
     font-size: 20px;
@@ -101,9 +112,6 @@ html {
       height: 26px;
     }
   }
-
-
-
 
 @media (max-width: 1024px) {
     .fnbutton {

@@ -2,14 +2,14 @@
  * @todo -> Add option to change background colour.
  * @todo -> Add fortnite challenges.
  * @todo -> Run the request through your own server, resize the images and cache the response
+ * @todo -> Add a state property for the platform. Just have it stored so I don't have to keep swapping for multiple players with the same platform
+                (when user clicks a platform, keep the platform as it is and not reset to default)
+
+
  */
 
 import React from "react";
-
-// --
-// Page Template
 import PageLayout from "../components/PageLayout";
-// --
 
 // --
 // User
@@ -21,13 +21,13 @@ import {
 import UserForm from "../components/UserForm";
 import UserStats from "../components/UserStats";
 
-const Index = ({ accountData, error }) => {
+const Index = ({ accountData, error, query }) => {
+  console.log("index: ", query.platform);
   return (
     <PageLayout>
-      <UserForm />
+      <UserForm inputUsername={query.username} inputPlatform={query.platform} />
 
-      {// Show stats
-      accountData === undefined ? null : (
+      {accountData === undefined ? null : (
         <UserStats user={accountData} error={error} />
       )}
     </PageLayout>
@@ -36,7 +36,7 @@ const Index = ({ accountData, error }) => {
 
 Index.getInitialProps = async ({ query }) => {
   if (query.username === undefined || query.platform === "none") {
-    return {};
+    return { query };
   }
 
   const accountid = await getUserAccountID(query.username);
@@ -49,7 +49,7 @@ Index.getInitialProps = async ({ query }) => {
     };
   }
 
-  return { accountData, error };
+  return { accountData, error, query };
 };
 
 export default Index;
