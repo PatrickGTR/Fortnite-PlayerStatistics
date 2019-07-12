@@ -25,7 +25,6 @@ const ItemShop = () => {
       ) : (
         <>
           <h1 className="title">WIP! (Redesigning)</h1>
-
           <div className="columns has-text-centered">
             <div className="column">
               <div className="box">

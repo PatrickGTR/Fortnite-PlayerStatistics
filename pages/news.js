@@ -28,6 +28,20 @@ const News = () => {
     getNewsData();
   }, []);
 
+  const label = label => {
+    switch (label) {
+      case "NEW!": {
+        return <img src="/static/new.png" />;
+      }
+      case "UPDATED!": {
+        return <img src="/static/updated.png" />;
+      }
+      default: {
+        return null;
+      }
+    }
+  };
+
   return (
     <>
       <PageLayout>
@@ -58,7 +72,9 @@ const News = () => {
                     >
                       <div className="message-header">
                         <p>
-                          {item.meta.adSpace !== null ? item.meta.adSpace : ""}
+                          {item.meta.adSpace !== null
+                            ? label(item.meta.adSpace)
+                            : ""}
                         </p>
                         <p>
                           <strong>

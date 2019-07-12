@@ -16,10 +16,10 @@ import {
 import UserForm from "../components/UserForm";
 import UserStats from "../components/UserStats";
 
-const Index = ({ accountData, error, query }) => {
+const Index = ({ accountData, error }) => {
   return (
     <PageLayout>
-      <UserForm inputUsername={query.username} inputPlatform={query.platform} />
+      <UserForm />
 
       {accountData === undefined ? null : (
         <UserStats user={accountData} error={error} />
@@ -30,7 +30,7 @@ const Index = ({ accountData, error, query }) => {
 
 Index.getInitialProps = async ({ query }) => {
   if (query.username === undefined || query.platform === "none") {
-    return { query };
+    return {};
   }
 
   const accountid = await getUserAccountID(query.username);
@@ -43,7 +43,7 @@ Index.getInitialProps = async ({ query }) => {
     };
   }
 
-  return { accountData, error, query };
+  return { accountData, error };
 };
 
 export default Index;

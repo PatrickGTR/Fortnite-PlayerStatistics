@@ -4,16 +4,16 @@ const FeaturedItems = ({ store }) => {
   return store.data.map(
     (element, index) =>
       element.store.isFeatured && (
-        <div key={index} className="shop-images">
+        <div key={index} className="item-images">
           <img
             src={
               element.item.images.information +
               "?cache={lastupdate}&size=medium"
             }
           />
-          <div className="shop-text">
-            <p>{element.item.name}</p>
-            <p>
+          <div className="item-box">
+            <p className="item-title">{element.item.name}</p>
+            <p className="item-price">
               <img
                 src="/static/vbucks.png"
                 alt="vbucks"
@@ -34,16 +34,16 @@ const DailyItems = ({ store }) => {
   return store.data.map(
     (element, index) =>
       !element.store.isFeatured && (
-        <div key={index} className="shop-images">
+        <div key={index} className="item-images">
           <img
             src={
               element.item.images.information +
               "?cache={lastupdate}&size=medium"
             }
           />
-          <div className="shop-text">
-            <p>{element.item.name}</p>
-            <p>
+          <div className="item-box">
+            <p className="item-title">{element.item.name}</p>
+            <p className="item-price">
               <img
                 src="/static/vbucks.png"
                 alt="vbucks"

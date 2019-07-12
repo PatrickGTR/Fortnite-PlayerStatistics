@@ -89,6 +89,7 @@ const HeadContent = () => (
     <meta name="theme-color" content="#ffffff" />
     // Website Name
     <title>Fortnite Statistics</title>
+    <script src="https://embed.twitch.tv/embed/v1.js" />
   </Head>
 );
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 const NavContent = () => {
   const links = [
     {
-      name: "Home",
+      name: "Search Player",
       path: "/"
     },
     {
