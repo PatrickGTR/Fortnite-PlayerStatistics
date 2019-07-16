@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "deploy": "now -b FORTNITE_API_KEY=@fn_key"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",

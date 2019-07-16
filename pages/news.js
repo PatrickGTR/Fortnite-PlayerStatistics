@@ -28,6 +28,8 @@ const News = () => {
     getNewsData();
   }, []);
 
+  /*
+    TODO: Fix the image sizes
   const label = label => {
     switch (label) {
       case "NEW!": {
@@ -40,7 +42,7 @@ const News = () => {
         return null;
       }
     }
-  };
+  }; */
 
   return (
     <>
@@ -72,9 +74,7 @@ const News = () => {
                     >
                       <div className="message-header">
                         <p>
-                          {item.meta.adSpace !== null
-                            ? label(item.meta.adSpace)
-                            : ""}
+                          {item.meta.adSpace !== null ? item.meta.adSpace : ""}
                         </p>
                         <p>
                           <strong>
