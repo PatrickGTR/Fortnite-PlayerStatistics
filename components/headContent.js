@@ -95,7 +95,7 @@ const HeadContent = () => (
     />
     <meta
       name="google-site-verification"
-      content="auwOvXHgnaGpeK9eKPhmAo1oyMOj_lJOlGlQNBKEXHE"
+      content="fIdu906NX0542Gok7887S6mMEGYM0N-FOKq-GeLcOUQ"
     />
     <meta
       name="keywords"
