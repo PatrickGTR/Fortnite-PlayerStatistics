@@ -82,11 +82,26 @@ const HeadContent = () => (
     />
     <link rel="manifest" href="/static/favicon/manifest.json" />
     <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="msapplication-TileImage"
       content="/static/favicon/ms-icon-144x144.png"
     />
     <meta name="theme-color" content="#ffffff" />
+    <meta charSet="utf-8" />
+    <meta
+      name="description"
+      content="PC, Xbox and PS4 Fortnite Stats, News, Challenges, Item Shop"
+    />
+    <meta
+      name="google-site-verification"
+      content="auwOvXHgnaGpeK9eKPhmAo1oyMOj_lJOlGlQNBKEXHE"
+    />
+    <meta
+      name="keywords"
+      content="Fortnite, Fortnite Stats, Fortnite PC, Fortnite Xbox, Fortnite Switch, Fortnite PS4"
+    />
+    <meta name="Author" content="Patrick Subang" />
     // Website Name
     <title>Fortnite Statistics</title>
   </Head>
