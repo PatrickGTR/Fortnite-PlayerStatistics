@@ -47,18 +47,7 @@ const News = () => {
   return (
     <>
       <PageLayout>
-        <h1
-          className="has-text-centered"
-          style={{
-            color: "white",
-            fontSize: "200px",
-            textShadow: "2px 2px black",
-            fontFamily: "Burbank Big Condensed",
-            lineHeight: "250px"
-          }}
-        >
-          NEWS
-        </h1>
+        <h1 className="fortnite-title has-text-centered">NEWS</h1>
 
         {isLoading && <Loader />}
 

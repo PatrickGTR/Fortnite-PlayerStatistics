@@ -12,6 +12,10 @@ const NavContent = () => {
       path: "/itemshop"
     },
     {
+      name: "Challenges",
+      path: "/challenges"
+    },
+    {
       name: "News",
       path: "/news"
     }
@@ -20,7 +24,7 @@ const NavContent = () => {
   return links.map((link, index) => {
     return (
       <Link key={index} href={link.path}>
-        <button className="fnbutton is-vcentered">{link.name}</button>
+        <button className="fortnite-button is-vcentered">{link.name}</button>
       </Link>
     );
   });

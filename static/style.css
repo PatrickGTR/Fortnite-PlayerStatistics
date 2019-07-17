@@ -12,7 +12,6 @@
 }
 
 
-
 html, body {
     height:100%;
 }
@@ -90,19 +89,55 @@ html {
     margin-bottom: 5px;
 }
 
-.fnbutton {
+.fortnite-title {
+    color: white;
+    font-size: 190px;
+    text-shadow: 2px 2px black;
+    font-family: Burbank Big Condensed;
+    line-height: 250px;
+}
+
+@media (max-width: 1024px) {
+    .fortnite-title {
+        font-size: 95px;
+        line-height: 100px;
+    }
+}
+
+@media (max-width: 767px) {
+    .fortnite-title {
+        font-size: 40px;
+        line-height: 50px;
+    }
+}
+
+.challenges-btn a {
+    font-size: 50px;
+    color: lightblue;
+    text-shadow: 2px 2px black;
+}
+
+.fortnite-button {
     font-size: 50px;
     font-family: "Burbank Big Condensed";
     background-color: rgba(0, 0, 0, 0.4);
     border: none;
-    padding: 10px 100px 5px 100px;
+    padding: 10px 70px 5px 70px;
     margin-right: 20px;
     color: white;
 }
 
-.fnbutton:hover {
+.fortnite-button:hover {
     background-color: rgba(0, 0, 0, 0.7);
     cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .fortnite-button {
+        font-size: 20px;
+        width: 100%;
+        margin-bottom: 5px;
+    }
 }
 
 
@@ -142,11 +177,3 @@ html {
       height: 26px;
     }
   }
-
-@media (max-width: 1024px) {
-    .fnbutton {
-        font-size: 20px;
-        width: 100%;
-        margin-bottom:  5px;
-    }
-}
