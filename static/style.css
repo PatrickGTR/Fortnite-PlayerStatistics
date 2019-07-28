@@ -2,7 +2,8 @@
     margin: 0;
 }
 
-@font-face {font-family: "Burbank Big Condensed";
+@font-face {
+    font-family: "Burbank Big Condensed";
     src: url("//db.onlinewebfonts.com/t/800e985f75a5a56c2f7b4be502d286de.eot");
     src: url("//db.onlinewebfonts.com/t/800e985f75a5a56c2f7b4be502d286de.eot?#iefix") format("embedded-opentype"),
     url("//db.onlinewebfonts.com/t/800e985f75a5a56c2f7b4be502d286de.woff2") format("woff2"),
@@ -15,8 +16,6 @@
 html, body {
     height:100%;
 }
-
-
 html {
     background: url(/static/body2.png) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -26,17 +25,6 @@ html {
   }
 .container {
     min-height: 100%;
-}
-
-.player-wrapper {
-    position: relative;
-    padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
-}
-
-.react-player {
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
 .item-images {
