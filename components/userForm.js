@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Router from "next/router";
 
 /**
     A custom Hook -> (Mainly use for forms that requires validation)
@@ -50,10 +51,15 @@ const UserForm = () => {
     return error;
   };
 
-  const redirectUser = () =>
-    window.location.replace(
-      `/?username=${value.username.trim()}&platform=${value.platform}`
-    );
+  const redirectUser = () => {
+    Router.push({
+      pathname: "/",
+      query: {
+        username: `${value.username.trim()}`,
+        platform: `${value.platform}`
+      }
+    });
+  };
 
   const { value, error, onChange, onSubmit } = useFormInput(
     redirectUser,
