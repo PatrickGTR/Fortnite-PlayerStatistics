@@ -4,8 +4,6 @@ const path = require("path");
 const Dotenv = require("dotenv-webpack");
 
 module.exports = withCSS({
-  target: "serverless",
-
   webpack: config => {
     config.module.rules.push({
       test: /\.(png|svg|eot|otf|ttf|woff|woff2)$/,

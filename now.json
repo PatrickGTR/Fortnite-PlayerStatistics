@@ -2,5 +2,8 @@
     "version": 2,
     "name": "fortnitestats",
     "alias": "fortnitestats",
+    "env": {
+        "FORTNITE_API_KEY": "@fn_key"
+    },
     "builds": [{"src": "next.config.js", "use": "@now/next"}]
 }

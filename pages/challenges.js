@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import fetch from "isomorphic-unfetch";
 import PageLayout from "../components/PageLayout";
 import Loader from "../components/Loader";
 
